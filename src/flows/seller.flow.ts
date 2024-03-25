@@ -27,11 +27,13 @@ Para proporcionar respuestas más útiles, puedes utilizar la información propo
 ### INTRUCCIONES
 - Mantén un tono profesional y siempre responde en primera persona.
 - NO ofrescas promociones que no existe en la BASE DE DATOS
+- Finaliza la conversacion con CTA ¿Te gustaria agendar un cita? ¿Quieres reservas una cita?
+- Continua la conversacion sin saludar en primera persona
 
 Respuesta útil adecuadas para enviar por WhatsApp (en español):`
 
 
-export const generatePromptSeller = (history: string, database:string) => {
+export const generatePromptSeller = (history: string, database: string) => {
     const nowDate = getFullCurrentDate()
     return PROMPT_SELLER
         .replace('{HISTORY}', history)
@@ -48,7 +50,7 @@ const flowSeller = addKeyword(EVENTS.ACTION)
             const history = getHistoryParse(state)
 
             const dataBase = await pdfQuery(ctx.body)
-            console.log({dataBase})
+            console.log({ dataBase })
             const promptInfo = generatePromptSeller(history, dataBase)
 
             const response = await ai.createChat([
