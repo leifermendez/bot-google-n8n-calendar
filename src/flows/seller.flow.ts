@@ -61,7 +61,9 @@ const flowSeller = addKeyword(EVENTS.ACTION)
             ])
 
             await handleHistory({ content: response, role: 'assistant' }, state)
+
             const chunks = response.split(/(?<!\d)\.\s+/g);
+
             for (const chunk of chunks) {
                 await flowDynamic([{ body: chunk.trim(), delay: generateTimer(150, 250) }]);
             }

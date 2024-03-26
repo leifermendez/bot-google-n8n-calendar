@@ -17,6 +17,9 @@ dependencies:
   date-fns:
     specifier: ^3.3.1
     version: 3.3.1
+  date-fns-tz:
+    specifier: 3.0.0-beta.2
+    version: 3.0.0-beta.2(date-fns@3.3.1)
   dotenv:
     specifier: ^16.4.2
     version: 16.4.5
@@ -1379,6 +1382,15 @@ packages:
 
   /curve25519-js@0.0.4:
     resolution: {integrity: sha512-axn2UMEnkhyDUPWOwVKBMVIzSQy2ejH2xRGy1wq81dqRwApXfIzfbE3hIX0ZRFBIihf/KDqK158DLwESu4AK1w==}
+    dev: false
+
+  /date-fns-tz@3.0.0-beta.2(date-fns@3.3.1):
+    resolution: {integrity: sha512-2iG/Z/n1vMoLqBEzhhVCBpoo9mibzwHS+U1YvsHlfyGhJu6UNB6WRtdyP3L2QsqfbKV4LSdvCWgUBWuLEZZZOQ==}
+    peerDependencies:
+      date-fns: ^3.0.0
+    dependencies:
+      date-fns: 3.3.1
+      lodash.clonedeep: 4.5.0
     dev: false
 
   /date-fns@3.3.1:

@@ -31,7 +31,7 @@ const generatePromptFilter = (history: string) => {
     return mainPrompt;
 }
 
-const flowSchedule = addKeyword(EVENTS.ACTION).addAction(async (ctx, { extensions, state, flowDynamic, endFlow }) => {
+const flowSchedule = addKeyword(EVENTS.ACTION).addAction(async (_, { extensions, state, flowDynamic, endFlow }) => {
     await flowDynamic('Dame un momento para consultar la agenda...');
     const ai = extensions.ai as AIClass;
     const history = getHistoryParse(state);
@@ -41,6 +41,7 @@ const flowSchedule = addKeyword(EVENTS.ACTION).addAction(async (ctx, { extension
         .map(({ start, end }) => ({ fromDate: new Date(start), toDate: new Date(end) }));
 
     console.log({ listParse })
+
     const promptFilter = generatePromptFilter(history);
 
     const { date } = await ai.desiredDateFn([

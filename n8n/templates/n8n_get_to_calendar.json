@@ -1,0 +1,74 @@
+{
+  "name": "Get Calendar",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "get-calendar-dentista-c1",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "id": "471f2f31-42d9-4c33-8e5e-e9cc6c4f586c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [800, 340],
+      "webhookId": "78949c33-5212-435f-ae5a-6bca3a3b0820"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "6d7a7a049ed5573f1a678446bdf2616ba0f9b703c812f5c43dfed84ece6613f1@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "[Dentista C1] - Citas"
+        },
+        "options": {}
+      },
+      "id": "20bd45a6-f4cd-4aee-957e-f38962ed3fa7",
+      "name": "Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.1,
+      "position": [1020, 340],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BBpnQ5Retph8LspB",
+          "name": "Google Codigoencasa"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e119599c-e928-45a6-ac1b-b96842f9a48c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8642e72ea029d224bcbe65602f7dc37dc06a57232849d8fd5c56e0e528d27981"
+  },
+  "id": "8RRAkwiCoEapVoUj",
+  "tags": [
+    {
+      "createdAt": "2024-03-19T15:41:37.845Z",
+      "updatedAt": "2024-03-19T15:41:37.845Z",
+      "id": "A4Vm3b079YTXpHeY",
+      "name": "DentistaC1"
+    }
+  ]
+}

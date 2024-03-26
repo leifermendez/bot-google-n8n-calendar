@@ -1,0 +1,90 @@
+{
+  "name": "Add Calendar",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "add-to-calendar-dentista-c1",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "id": "00b71c28-835f-4846-a845-6a638b86c6ef",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        260
+      ],
+      "webhookId": "95aeb6c4-0190-47fa-ae24-cda8a3e79a9f"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "6d7a7a049ed5573f1a678446bdf2616ba0f9b703c812f5c43dfed84ece6613f1@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "[Dentista C1] - Citas"
+        },
+        "start": "={{ $json[\"body\"][\"startDate\"] }}",
+        "end": "={{ (() => {\n    const gap = 45\n    const startDate = new Date($json[\"body\"][\"startDate\"]);\n    const endDate = new Date(startDate.getTime() + (gap * 60 * 1000));\n\n    const formatNumber = (num) => (num < 10 ? '0' : '') + num;\n\n    const formattedDate = endDate.getFullYear() + '/' +\n        formatNumber(endDate.getMonth() + 1) + '/' +\n        formatNumber(endDate.getDate()) + ' ' +\n        formatNumber(endDate.getHours()) + ':' +\n        formatNumber(endDate.getMinutes()) + ':' +\n        formatNumber(endDate.getSeconds());\n\n    return formattedDate;\n})() }}",
+        "additionalFields": {
+          "attendees": [
+            "={{ $json[\"body\"][\"email\"] }}"
+          ],
+          "summary": "=Nueva reunion: {{ $json[\"body\"][\"name\"] }}"
+        }
+      },
+      "id": "27d36190-0435-440b-a6d7-c436ffbbd98b",
+      "name": "Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        260
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BBpnQ5Retph8LspB",
+          "name": "Google Codigoencasa"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "af45417c-3755-40c0-bf11-6ad3253bedc3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8642e72ea029d224bcbe65602f7dc37dc06a57232849d8fd5c56e0e528d27981"
+  },
+  "id": "8SpipiV1ItQyNeb6",
+  "tags": [
+    {
+      "createdAt": "2024-03-19T15:41:37.845Z",
+      "updatedAt": "2024-03-19T15:41:37.845Z",
+      "id": "A4Vm3b079YTXpHeY",
+      "name": "DentistaC1"
+    }
+  ]
+}

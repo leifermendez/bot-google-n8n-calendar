@@ -1,9 +1,11 @@
 import { addKeyword, EVENTS } from "@builderbot/bot";
 import { clearHistory } from "../utils/handleHistory";
 import { addMinutes, format } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
 import { appToCalendar } from "src/services/calendar";
 
 const DURATION_MEET = process.env.DURATION_MEET ?? 45
+const TIME_ZONE = process.env.TZ
 /**
  * Encargado de pedir los datos necesarios para registrar el evento en el calendario
  */
@@ -29,8 +31,8 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
         const dateObject = {
             name: state.get('name'),
             email: ctx.body,
-            startDate: state.get('desiredDate'),
-            endData: addMinutes(state.get('desiredDate'), +DURATION_MEET),
+            startDate: utcToZonedTime(state.get('desiredDate'), TIME_ZONE),
+            endData: utcToZonedTime(addMinutes(state.get('desiredDate'), +DURATION_MEET), TIME_ZONE),
             phone: ctx.from
         }
 
