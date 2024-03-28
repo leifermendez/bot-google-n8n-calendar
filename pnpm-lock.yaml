@@ -7,13 +7,13 @@ settings:
 dependencies:
   '@builderbot-plugins/telegram':
     specifier: ^1.0.0
-    version: 1.0.0(@builderbot/bot@1.0.27-alpha.0)(polka@0.5.2)(telegraf@4.15.3)
+    version: 1.0.0(@builderbot/bot@1.0.28-alpha.0)(polka@0.5.2)(telegraf@4.15.3)
   '@builderbot/bot':
-    specifier: 1.0.27-alpha.0
-    version: 1.0.27-alpha.0
+    specifier: 1.0.28-alpha.0
+    version: 1.0.28-alpha.0
   '@builderbot/provider-baileys':
-    specifier: 1.0.27-alpha.0
-    version: 1.0.27-alpha.0
+    specifier: 1.0.28-alpha.0
+    version: 1.0.28-alpha.0
   '@ffmpeg-installer/ffmpeg':
     specifier: ^1.1.0
     version: 1.1.0
@@ -72,14 +72,14 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /@builderbot-plugins/telegram@1.0.0(@builderbot/bot@1.0.27-alpha.0)(polka@0.5.2)(telegraf@4.15.3):
+  /@builderbot-plugins/telegram@1.0.0(@builderbot/bot@1.0.28-alpha.0)(polka@0.5.2)(telegraf@4.15.3):
     resolution: {integrity: sha512-NmcJCvSpyZHvtS76XhJMGO49Q88iW7lKgCPvLTI1amTt+80ZSiTrz3neOfoRv/Ko2tOK9bNT9vcSCUtT2sSweA==}
     peerDependencies:
       '@builderbot/bot': '>=1.0.0'
       polka: '>=0.5.2'
       telegraf: '=4.15.3'
     dependencies:
-      '@builderbot/bot': 1.0.27-alpha.0
+      '@builderbot/bot': 1.0.28-alpha.0
       body-parser: 1.20.2
       dotenv: 16.4.1
       polka: 0.5.2
@@ -88,8 +88,8 @@ packages:
       - supports-color
     dev: false
 
-  /@builderbot/bot@1.0.27-alpha.0:
-    resolution: {integrity: sha512-qYm8VT8nWj/bRKE/iEbapdmKsWXTRMrgmHT7PTdiPZZUsqOQTmclGFrrAp9dW5pEQ5rSTeb5njQnR79Tq059Zw==}
+  /@builderbot/bot@1.0.28-alpha.0:
+    resolution: {integrity: sha512-qbYTkcvcRgvLA2pYUqkzrMbUsJRp1hv+ZkAyABnAPXqd7PQqhkwsa5JF42UE8YalodEVR6lAa3TBg4VrbOW3sQ==}
     dependencies:
       '@ffmpeg-installer/ffmpeg': 1.1.0
       body-parser: 1.20.2
@@ -105,8 +105,8 @@ packages:
       - supports-color
     dev: false
 
-  /@builderbot/provider-baileys@1.0.27-alpha.0:
-    resolution: {integrity: sha512-/QAxr0E+wNV7JaVhpbSv39v04E9zpdmtRpPlDi08FXNyXsPxMj1hWlilWIAESVI1/dYRcvv91LkYw4ONOTbNtw==}
+  /@builderbot/provider-baileys@1.0.28-alpha.0:
+    resolution: {integrity: sha512-p6F4aTzkzFEwpsTuEOkNueMMniOxQegsgZovuJp0Db6yhyVNqePpyvozo7KRHYxRyFZsEg2amaN1EBtnCerM7g==}
     dependencies:
       '@ffmpeg-installer/ffmpeg': 1.1.0
       '@types/polka': 0.5.7
