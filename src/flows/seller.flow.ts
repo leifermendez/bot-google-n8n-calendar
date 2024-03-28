@@ -1,6 +1,6 @@
 import { addKeyword, EVENTS } from "@builderbot/bot";
 import { generateTimer } from "../utils/generateTimer";
-import { getHistoryParse, handleHistory } from "../utils/handleHistory";
+import { getHistory, getHistoryParse, handleHistory } from "../utils/handleHistory";
 import AIClass from "../services/ai";
 import { getFullCurrentDate } from "src/utils/currentDate";
 import { pdfQuery } from "src/services/pdf";
@@ -43,13 +43,14 @@ export const generatePromptSeller = (history: string, database: string) => {
 
 const flowSeller = addKeyword(EVENTS.ACTION)
     .addAnswer(`⏱️`)
-    .addAction(async (ctx, { state, flowDynamic, extensions }) => {
+    .addAction(async (_, { state, flowDynamic, extensions }) => {
         try {
 
             const ai = extensions.ai as AIClass
+            const lastMessage = getHistory(state).at(-1)
             const history = getHistoryParse(state)
 
-            const dataBase = await pdfQuery(ctx.body)
+            const dataBase = await pdfQuery(lastMessage.content)
             console.log({ dataBase })
             const promptInfo = generatePromptSeller(history, dataBase)
 
