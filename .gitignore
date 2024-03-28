@@ -4,3 +4,5 @@ node_modules
 *.png
 *_sessions
 dist/*
+*.oga
+*.mp3
