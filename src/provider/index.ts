@@ -1,4 +1,8 @@
 import { createProvider } from '@builderbot/bot'
-import { BaileysProvider } from '@builderbot/provider-baileys'
+import { WaliProvider } from '@builderbot-plugins/wali'
 
-export const provider = createProvider(BaileysProvider)
+export const provider = createProvider(WaliProvider,{
+    deviceId:process.env.CONSOLE_DEVICE_ID,
+    token:process.env.CONSOLE_KEY,
+    api:'https://wa-api.builderbot.app'
+})
