@@ -14,8 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "@builderbot-plugins/wali": "^1.0.2",
-    "@builderbot/bot": "1.1.5",
-    "@builderbot/provider-baileys": "^1.1.5",
+    "@builderbot/bot": "1.2.1",
+    "@builderbot/provider-baileys": "^1.2.1",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "date-fns": "^3.3.1",
     "date-fns-tz": "3.0.0-beta.2",
