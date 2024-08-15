@@ -28,7 +28,7 @@ This project is an AI-powered chatbot designed for appointment scheduling, built
 1. Clone the repository:
 
    ```
-   git clone https://github.com/jyd-dev/builderbot-chatbot
+   git clone https://github.com/leifermendez/bot-google-n8n-calendar
    cd builderbot-chatbot
    ```
 
