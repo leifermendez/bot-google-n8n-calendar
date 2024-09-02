@@ -57,6 +57,7 @@ const flowSeller = addKeyword(EVENTS.ACTION)
             const dataBase = await pdfQuery(lastMessage.content)
             console.log({ dataBase })
             const promptInfo = generatePromptSeller(history, dataBase)
+            console.log(promptInfo)
 
             const response = await ai.createChat([
                 {
