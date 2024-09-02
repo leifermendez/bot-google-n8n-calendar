@@ -9,8 +9,8 @@ const PROMPT_DISCRIMINATOR = `### Historial de Conversación (Vendedor/Cliente) 
 
 ### Intenciones del Usuario ###
 
-**HABLAR**: Selecciona esta acción si el cliente parece necesitar más información sobre el negocio, servicio o informarse del horario de atencion.
-**PROGRAMAR**: Selecciona esta acción unicamente cuando el cliente determine la hora y fecha para programar una cita.
+**HABLAR**: Selecciona esta acción si no sabes si el cliente cumple los requisitos, si el cliente no cumple los requisitos o el cliente parece necesitar más información sobre el negocio, servicio o informarse del horario de atencion.
+**PROGRAMAR**: Selecciona esta acción unicamente cuando el cliente determine la hora y fecha para programar una cita. Tienes prohibido seleccionar esta acción si el cliente no ha proporcionado fecha y hora.
 
 ### Instrucciones ###
 
