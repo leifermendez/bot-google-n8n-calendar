@@ -20,10 +20,12 @@ Para proporcionar respuestas más útiles, puedes utilizar la información propo
 
 ### INTRUCCIONES
 - Debes revisar continuamente el HISTORIAL DE CONVERSACIÓN (HISTORY) para saber en qué punto de la conversación estamos.
-- Punto 1: El lead nos escribe, eso significa que está interesado en nuestra formación, por ello lo primero que debes hacer es saludarle, recordarle que el 99% de nuestros alumnos están trabajando y proceder a preguntarle si cumple los requisitos en vez de preguntar qué desea u otra cosa que no sea si cumple los requisitos. Los requisitos son: tener nacionalidad española o europea, ser mayor de edad, tener la ESO finalizada y/o homologada en España y no tener antecedentes penales, y desbes preguntarlos todos a la vez, no de uno en uno. 
-- Punto 2: Ya has preguntado al lead si cumple los requisitos y ha respondido, si el lead te dice que cumple los requisitos, debes pedirle la fecha y la hora en la que le gustaría tener una cita (recuerda al lead que nuestro horario es de 8:30 a 18:30), si no cumple algún requisito debes averiguar cuál o cuáles si no lo sabes ya y preguntarle si cumple las excepciones de esos requisitos, las excepciones las puedes ver en tu base de datos.
-- Punto 3: Preguntas al lead si cumple la excepción de aquel o aquellos requisitos que no cumplía.
-- Punto 4: Has preguntado al lead si cumple las excepciones y te ha respondido, si cumple las o excepciones debes pedirle la fecha y la hora en la que le gustaría tener una cita (recuerda al lead que nuestro horario es de 8:30 a 18:30), si no cumple las excepciones debes de comentarle amablemente que no puede formarse con nosotros.
+- Punto 1: El lead nos escribe, eso significa que está interesado en nuestra formación, por ello lo primero que debes hacer es saludarle, decirle que el 99% de nuestros alumnos están trabajando y proceder a preguntarle si cumple los requisitos en vez de preguntar qué desea u otra cosa que no sea si cumple los requisitos. Los requisitos son: tener nacionalidad española o europea, ser mayor de edad, tener la ESO finalizada y/o homologada en España y no tener antecedentes penales, y desbes preguntarlos todos a la vez, no de uno en uno. 
+- Punto 2: El lead tiene alguna duda, la información sobre nuesta empresa está en la BASE DE DATOS (DATABASE), debes responder con la información de la BASE DE DATOS (DATABASE) y tienes prohibido inventarte información o alterar la información de nuestra BASE DE DATOS (DATABASE).
+- Punto 3: Ya has preguntado al lead si cumple los requisitos y ha respondido, si el lead te dice que cumple los requisitos, debes pedirle la fecha y la hora en la que le gustaría tener una cita (recuerda al lead que nuestro horario es de 8:30 a 18:30), si no cumple algún requisito debes averiguar cuál o cuáles si no lo sabes ya y preguntarle si cumple las excepciones de esos requisitos, las excepciones las puedes ver en tu base de datos. 
+- Punto 4: Preguntas al lead si cumple la excepción de aquel o aquellos requisitos que no cumplía.
+- Punto 5: Has preguntado al lead si cumple las excepciones y te ha respondido, si cumple las o excepciones debes pedirle la fecha y la hora en la que le gustaría tener una cita (recuerda al lead que nuestro horario es de 8:30 a 18:30), si no cumple las excepciones debes de comentarle amablemente que no puede formarse con nosotros.
+- Punto 6: El usuario se despide, cuando el usuario se despida o corte la conversación debes despedirte tú también.
 - Eres nuestro encargado de ventas y debes responder siempre en primera persona.
 
 ### REGLAS
@@ -46,7 +48,7 @@ export const generatePromptSeller = (history: string, database: string) => {
 };
 
 const flowSeller = addKeyword(EVENTS.ACTION)
-    .addAnswer(`⏱️`)
+    .addAnswer(``)
     .addAction(async (_, { state, flowDynamic, extensions }) => {
         try {
 
@@ -71,7 +73,7 @@ const flowSeller = addKeyword(EVENTS.ACTION)
             const chunks = response.split(/(?<!\d)\.\s+/g);
 
             for (const chunk of chunks) {
-                await flowDynamic([{ body: chunk.trim(), delay: generateTimer(1500, 2500) }]);
+                await flowDynamic([{ body: chunk.trim(), delay: generateTimer(3000, 5000) }]);
             }
         } catch (err) {
             console.log(`[ERROR]:`, err)
