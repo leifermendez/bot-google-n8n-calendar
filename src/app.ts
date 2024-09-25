@@ -7,7 +7,7 @@ import { provider } from './provider';
 /** Puerto en el que se ejecutará el servidor */
 const PORT = process.env.PORT ?? 3001
 /** Instancia de la clase AI */
-const ai = new AIClass(process.env.OPEN_API_KEY, 'gpt-4o-mini')
+const ai = new AIClass(process.env.OPEN_API_KEY, 'gpt-4o')
 
 /**
  * Función principal que inicializa y configura el bot
