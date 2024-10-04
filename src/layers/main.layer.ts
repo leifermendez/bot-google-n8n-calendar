@@ -6,6 +6,13 @@ import { flowSchedule } from "../flows/schedule.flow"
 
 const url = 'https://primary-production-1a67.up.railway.app/webhook/abc11b34-9ca3-41f8-888-4ff45908d2ec';
 
+async function enviarDatosWebhook(ctx: BotContext, state: BotMethods['state']) {
+  // Verifica si 'ctx' y 'state' existen y tienen los valores esperados
+  if (!ctx || !state) {
+    console.error('Error: ctx o state no están definidos.');
+    return;
+  }
+
 const data = {
   phone: ctx.from,
   name: state.get('name'),
