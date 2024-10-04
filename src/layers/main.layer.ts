@@ -6,26 +6,28 @@ import { flowSchedule } from "../flows/schedule.flow"
 
 const url = 'https://primary-production-1a67.up.railway.app/webhook/abc11b34-9ca3-41f8-888-4ff45908d2ec';
 
-async function enviarDatosWebhook(ctx: BotContext, state: BotMethods['state']) {
-  const data = {
-    phone: ctx.from,
-    name: state.get('name'),
-    history: "{HISTORY}"
-  };
+const data = {
+  phone: ctx.from,
+  name: state.get('name'),
+  history: "{HISTORY}"
+};
 
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  };
+const options = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data)
+};
 
-  // Envía los datos sin esperar la respuesta ni manejar errores
-  fetch(url, options);
-}
-
-export { enviarDatosWebhook };
+fetch(url, options)
+  .then(response => response.json())
+  .then(responseData => {
+    console.log('Success:', responseData);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
 
 const PROMPT_DISCRIMINATOR = `### Historial de Conversación (Vendedor/Cliente) ###
 {HISTORY}
