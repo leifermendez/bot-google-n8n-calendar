@@ -24,7 +24,7 @@ export default async (ctx, _: BotContext, { state, gotoFlow, extensions }: BotMe
     const url = 'https://primary-production-1a67.up.railway.app/webhook/abc11b34-9ca3-41f8-888-4ff45908d2ec';
 
 const data = {
-  phone: ctx.from,
+  phone: "600000000",
   history: history
 };
 
