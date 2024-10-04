@@ -30,6 +30,13 @@ async function enviarDatosWebhook(ctx: BotContext, state: BotMethods['state']) {
     console.error('Error:', error);
     throw error;
   }
+  try {
+    await enviarDatosWebhook(ctx, state);
+    return 'Datos enviados con éxito';
+  } catch (error) {
+    console.error('Error al enviar datos al webhook:', error);
+    return 'Hubo un error al procesar tus datos. Por favor, intenta de nuevo más tarde.';
+  }
 }
 export { enviarDatosWebhook };
 
