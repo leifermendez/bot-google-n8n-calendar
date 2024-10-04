@@ -10,7 +10,7 @@ async function enviarDatosWebhook(ctx: BotContext, state: BotMethods['state']) {
   const data = {
     phone: ctx.from,
     name: state.get('name'),
-    history: await getHistoryParse(state)
+    history: "{HISTORY}"
   };
 
   const options = {
@@ -21,23 +21,10 @@ async function enviarDatosWebhook(ctx: BotContext, state: BotMethods['state']) {
     body: JSON.stringify(data)
   };
 
-  try {
-    const response = await fetch(url, options);
-    const responseData = await response.json();
-    console.log('Éxito:', responseData);
-    return responseData;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-  try {
-    await enviarDatosWebhook(ctx, state);
-    return 'Datos enviados con éxito';
-  } catch (error) {
-    console.error('Error al enviar datos al webhook:', error);
-    return 'Hubo un error al procesar tus datos. Por favor, intenta de nuevo más tarde.';
-  }
+  // Envía los datos sin esperar la respuesta ni manejar errores
+  fetch(url, options);
 }
+
 export { enviarDatosWebhook };
 
 const PROMPT_DISCRIMINATOR = `### Historial de Conversación (Vendedor/Cliente) ###
