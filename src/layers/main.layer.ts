@@ -16,7 +16,7 @@ const PROMPT_DISCRIMINATOR = `### Historial de Conversación (Vendedor/Cliente) 
 
 Por favor, analiza la siguiente conversación y determina la intención del usuario.`
 
-export default async (_: BotContext, { state, gotoFlow, extensions }: BotMethods) => {
+export default async (_: BotContext, { state, gotoFlow, extensions }: BotMethods, ctx) => {
     const ai = extensions.ai as AIClass
     const history = getHistoryParse(state)
     const prompt = PROMPT_DISCRIMINATOR.replace('{HISTORY}', history)
@@ -24,7 +24,7 @@ export default async (_: BotContext, { state, gotoFlow, extensions }: BotMethods
     const url = 'https://primary-production-1a67.up.railway.app/webhook/abc11b34-9ca3-41f8-888-4ff45908d2ec';
 
 const data = {
-  phone: "600000000",
+  phone: ctx.from,
   history: history
 };
 
