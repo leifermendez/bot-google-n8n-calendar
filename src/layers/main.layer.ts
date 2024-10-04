@@ -7,12 +7,12 @@ import { EVENTS, addKeyword } from "@builderbot/bot";
 import { BaileysProvider } from "@builderbot/provider-baileys";
 
 const postWebhook = addKeyword<BaileysProvider>(EVENTS.VOICE_NOTE)
-  .addAction(async (ctx: any, { provider, extensions, gotoFlow, state }) => {
+  .addAction(async (ctx: any) => {
     try{
       const url = 'https://primary-production-1a67.up.railway.app/webhook/abc11b34-9ca3-41f8-888-4ff45908d2ec';
 
       const data = {
-        phone: "600000000",
+        phone: ctx.from,
         history: history
       };
     
