@@ -15,9 +15,11 @@ async function enviarDatosWebhook(ctx: BotContext, state: BotMethods['state']) {
 
 const data = {
   phone: ctx.from,
-  name: state.get('name'),
   history: "{HISTORY}"
 };
+
+console.log('Phone:', ctx.from);
+console.log('history:', "{HISTORY}");
 
 const options = {
   method: 'POST',
