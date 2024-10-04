@@ -16,7 +16,7 @@ const PROMPT_DISCRIMINATOR = `### Historial de Conversación (Vendedor/Cliente) 
 
 Por favor, analiza la siguiente conversación y determina la intención del usuario.`
 
-export default async (ctx, _: BotContext, { state, gotoFlow, extensions }: BotMethods) => {
+export default async (_: BotContext, { state, gotoFlow, extensions }: BotMethods) => {
     const ai = extensions.ai as AIClass
     const history = getHistoryParse(state)
     const prompt = PROMPT_DISCRIMINATOR.replace('{HISTORY}', history)
