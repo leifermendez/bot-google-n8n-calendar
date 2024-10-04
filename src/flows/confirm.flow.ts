@@ -6,6 +6,14 @@ import { appToCalendar } from "src/services/calendar";
 
 const DURATION_MEET = process.env.DURATION_MEET ?? 45
 const TIME_ZONE = process.env.TZ
+const WAIT_TIME = 40 * 60 * 1000; 
+
+const callCalendarAPI = async () => {
+    const response = await fetch('https://api.endpoint.com');
+    const data = await response.json();
+    return data;
+};
+
 /**
  * Encargado de pedir los datos necesarios para registrar el evento en el calendario
  */
@@ -40,6 +48,11 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
 
         clearHistory(state)
         await flowDynamic('Listo! agendado Buen dia')
-    })
+
+    setTimeout(async () => {
+        const apiData = await callCalendarAPI();
+        await flowDynamic(`Aquí tienes la información que prometí: ${apiData}`);
+    }, WAIT_TIME);
+});
 
 export { flowConfirm }
