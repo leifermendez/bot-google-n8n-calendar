@@ -12,7 +12,7 @@ async function enviarDatosWebhook(ctx: BotContext, state: BotMethods['state']) {
     console.error('Error: ctx o state no están definidos.');
     return;
   }
-}
+
 const data = {
   phone: ctx.from,
   name: state.get('name'),
@@ -34,7 +34,7 @@ fetch(url, options)
   })
   .catch(error => {
     console.error('Error:', error);
-  });
+  });}
 
 const PROMPT_DISCRIMINATOR = `### Historial de Conversación (Vendedor/Cliente) ###
 {HISTORY}
