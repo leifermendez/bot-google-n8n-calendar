@@ -12,7 +12,7 @@ async function enviarDatosWebhook(ctx: BotContext, state: BotMethods['state']) {
     console.error('Error: ctx o state no están definidos.');
     return;
   }
-
+}
 const data = {
   phone: ctx.from,
   name: state.get('name'),
