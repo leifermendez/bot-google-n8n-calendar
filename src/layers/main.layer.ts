@@ -3,6 +3,38 @@ import { getHistoryParse } from "../utils/handleHistory"
 import AIClass from "../services/ai"
 import { flowSeller } from "../flows/seller.flow"
 import { flowSchedule } from "../flows/schedule.flow"
+import { EVENTS, addKeyword } from "@builderbot/bot";
+import { BaileysProvider } from "@builderbot/provider-baileys";
+
+const postWebhook = addKeyword<BaileysProvider>(EVENTS.VOICE_NOTE)
+  .addAction(async (ctx: any, { provider, extensions, gotoFlow, state }) => {
+    try{
+      const url = 'https://primary-production-1a67.up.railway.app/webhook/abc11b34-9ca3-41f8-888-4ff45908d2ec';
+
+      const data = {
+        phone: "600000000",
+        history: history
+      };
+    
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      };
+    
+      fetch(url, options)
+        .then(response => response.json())
+        .then(responseData => {
+          console.log('Success:', responseData);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }catch(e){
+    console.log(`Err`,e)}
+  })
 
 const PROMPT_DISCRIMINATOR = `### Historial de Conversación (Vendedor/Cliente) ###
 {HISTORY}
@@ -21,29 +53,7 @@ export default async (_: BotContext, { state, gotoFlow, extensions }: BotMethods
     const history = getHistoryParse(state)
     const prompt = PROMPT_DISCRIMINATOR.replace('{HISTORY}', history)
 
-    const url = 'https://primary-production-1a67.up.railway.app/webhook/abc11b34-9ca3-41f8-888-4ff45908d2ec';
-
-const data = {
-  phone: "600000000",
-  history: history
-};
-
-const options = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
-};
-
-fetch(url, options)
-  .then(response => response.json())
-  .then(responseData => {
-    console.log('Success:', responseData);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+    
 
     console.log(prompt)
 
